@@ -7,7 +7,7 @@ import com.example.submithelpservice.model.VolunteerInfo;
 import com.example.submithelpservice.service.AnnouncementService;
 import com.example.submithelpservice.service.UserService;
 import com.example.submithelpservice.service.VolunteerInfoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +33,7 @@ public class VolunteerInfoController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> createVolunteer(@RequestBody VolunteerRequestDTO volunteerRequestDTO){
+    public ResponseEntity<?> createVolunteer(@Valid @RequestBody VolunteerRequestDTO volunteerRequestDTO){
 
         volunteerInfoService.createVolunteer(volunteerRequestDTO);
 
