@@ -3,6 +3,7 @@ package com.example.submithelpservice.service;
 import com.example.submithelpservice.dto.VolunteerRequestDTO;
 import com.example.submithelpservice.model.Target;
 import com.example.submithelpservice.model.VolunteerInfo;
+import com.example.submithelpservice.response.HelpFormResponse;
 import com.example.submithelpservice.response.VolunteerInfoResponse;
 
 import javax.swing.text.TableView;
@@ -20,7 +21,7 @@ public interface VolunteerInfoService {
 
      public List<VolunteerInfoResponse> getVolunteersByAnnouncementId(Long id);
 
-     public Long getTypeByAnnouncementId(Long id);
+     public HelpFormResponse getTypeByTargetId(Long id);
 
 
 

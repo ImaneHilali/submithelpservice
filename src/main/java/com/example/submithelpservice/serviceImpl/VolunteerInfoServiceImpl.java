@@ -5,6 +5,7 @@ import com.example.submithelpservice.enums.Status;
 import com.example.submithelpservice.exception.*;
 import com.example.submithelpservice.model.*;
 import com.example.submithelpservice.repository.VolunteerInfoRepository;
+import com.example.submithelpservice.response.HelpFormResponse;
 import com.example.submithelpservice.response.VolunteerInfoResponse;
 import com.example.submithelpservice.service.AnnouncementService;
 import com.example.submithelpservice.service.TargetService;
@@ -126,11 +127,21 @@ public class VolunteerInfoServiceImpl implements VolunteerInfoService {
     }
 
     @Override
-    public Long getTypeByAnnouncementId(Long id){
-        Announcement announcement = announcementService.getAnnouncementId(id);
-        Long authorizationId = announcement.getAuthorization().getId();
+    public HelpFormResponse getTypeByTargetId(Long id){
 
-        return authorizationId;
+        HelpFormResponse helpFormResponse = new HelpFormResponse();
+
+        Target target = targetService.getTarget(id);
+
+        helpFormResponse.setAnnouncementName(target.getAnnouncement().getTitle());
+
+        helpFormResponse.setTargetId(id);
+
+        helpFormResponse.setAuthorizationId(target.getAnnouncement().getAuthorization().getId());
+
+        helpFormResponse.setTargetName(target.getName());
+
+        return helpFormResponse;
     }
 
 }

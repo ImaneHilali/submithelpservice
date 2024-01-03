@@ -4,6 +4,7 @@ package com.example.submithelpservice.controller;
 import com.example.submithelpservice.dto.VolunteerRequestDTO;
 import com.example.submithelpservice.model.Announcement;
 import com.example.submithelpservice.model.VolunteerInfo;
+import com.example.submithelpservice.response.HelpFormResponse;
 import com.example.submithelpservice.service.AnnouncementService;
 import com.example.submithelpservice.service.UserService;
 import com.example.submithelpservice.service.VolunteerInfoService;
@@ -92,11 +93,11 @@ public class VolunteerInfoController {
     }
 
     @GetMapping("/getType/{id}")
-    public ResponseEntity<?> getTypeByAnnouncementId(@PathVariable Long id){
+    public ResponseEntity<?> getTypeByTargetId(@PathVariable Long id){
 
-        Long authorizationId = volunteerInfoService.getTypeByAnnouncementId(id);
+        HelpFormResponse helpFormResponse = volunteerInfoService.getTypeByTargetId(id);
 
-        return ResponseEntity.status(HttpStatus.OK).body(Map.of("authorizationId", authorizationId));
+        return ResponseEntity.status(HttpStatus.OK).body(helpFormResponse);
 
     }
 
