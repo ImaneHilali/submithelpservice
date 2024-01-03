@@ -6,6 +6,7 @@ import com.example.submithelpservice.exception.*;
 import com.example.submithelpservice.model.*;
 import com.example.submithelpservice.repository.VolunteerInfoRepository;
 import com.example.submithelpservice.response.VolunteerInfoResponse;
+import com.example.submithelpservice.service.AnnouncementService;
 import com.example.submithelpservice.service.TargetService;
 import com.example.submithelpservice.service.VolunteerFactory;
 import com.example.submithelpservice.service.VolunteerInfoService;
@@ -21,14 +22,16 @@ public class VolunteerInfoServiceImpl implements VolunteerInfoService {
     private final VolunteerFactory volunteerFactory;
     private final VolunteerInfoRepository volunteerInfoRepository;
     private final TargetService targetService;
+    private final AnnouncementService announcementService;
 
 
     @Autowired
-    public VolunteerInfoServiceImpl(VolunteerFactory volunteerFactory, VolunteerInfoRepository volunteerInfoRepository, TargetService targetService) {
+    public VolunteerInfoServiceImpl(VolunteerFactory volunteerFactory, VolunteerInfoRepository volunteerInfoRepository, TargetService targetService, AnnouncementService announcementService) {
 
         this.volunteerFactory = volunteerFactory;
         this.volunteerInfoRepository = volunteerInfoRepository;
         this.targetService = targetService;
+        this.announcementService = announcementService;
     }
 
 
@@ -120,6 +123,14 @@ public class VolunteerInfoServiceImpl implements VolunteerInfoService {
         volunteerInfoResponse.setTitle(volunteerInfo.getTarget().getAnnouncement().getTitle());
 
         return volunteerInfoResponse;
+    }
+
+    @Override
+    public Long getTypeByAnnouncementId(Long id){
+        Announcement announcement = announcementService.getAnnouncementId(id);
+        Long authorizationId = announcement.getAuthorization().getId();
+
+        return authorizationId;
     }
 
 }

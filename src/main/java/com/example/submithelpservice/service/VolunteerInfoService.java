@@ -20,5 +20,8 @@ public interface VolunteerInfoService {
 
      public List<VolunteerInfoResponse> getVolunteersByAnnouncementId(Long id);
 
+     public Long getTypeByAnnouncementId(Long id);
+
+
 
 }
