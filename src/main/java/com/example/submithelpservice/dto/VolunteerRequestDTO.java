@@ -20,27 +20,20 @@ public class VolunteerRequestDTO {
     @NotBlank(message = "Address is required")
     private String address;
 
-    @NotBlank(message = "Volunteer type is required")
     private String volunteerType;
 
-    @NotBlank(message = "sex is required")
     private String sexe;
 
     private String description;
 
-    @NotBlank(message = "Blood type is required")
     private String bloodType;
 
-    @NotNull(message = "Card number is required")
     private Long cardNumber;
 
-    @NotNull(message = "Expiration date is required")
-    private Date dateExpiration;
+    private String dateExpiration;
 
-    @NotNull(message = "CVC is required")
     private Long cvc;
 
-    @NotNull(message = "Number is required")
     private Long number;
 
     private Boolean isConfirmed;

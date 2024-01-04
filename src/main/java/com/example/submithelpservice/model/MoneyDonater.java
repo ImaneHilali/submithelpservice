@@ -14,7 +14,7 @@ public class MoneyDonater extends VolunteerInfo{
 
     private Long cardNumber;
 
-    private Date dateExpiration;
+    private String dateExpiration;
 
     private Long cvc;
 
